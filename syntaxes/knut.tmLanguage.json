@@ -7,6 +7,15 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#dates"
+		},
+		{
+			"include": "#accounts"
+		},
+		{
+			"include": "#headings"
 		}
 	],
 	"repository": {
@@ -26,6 +35,30 @@
 				{
 					"name": "constant.character.escape.knut",
 					"match": "\\\\."
+				}
+			]
+		},
+		"dates": {
+			"patterns": [
+				{
+					"name": "variable.other.date",
+					"match": "^(\\d{4}-\\d{2}-\\d{2})\\b"
+				}
+			]
+		},
+		"accounts": {
+			"patterns": [
+				{
+					"name": "variable.other.account",
+					"match": "\\b(Assets|Liabilities|Equity|Income|Expenses)(:\\p{Alnum}+)*\\b"
+				}
+			]
+		},
+		"headings": {
+			"patterns": [
+				{
+					"name": "markup.headings",
+					"match": "^(\\*)+.*$"
 				}
 			]
 		}
