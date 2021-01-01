@@ -1,0 +1,34 @@
+{
+    "name": "language-knut",
+    "displayName": "knut syntax support",
+    "description": "Syntax support for the knut plain-text accounting system",
+    "publisher": "sboehler",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "knut",
+                "aliases": [
+                    "knut"
+                ],
+                "extensions": [
+                    "knut"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "knut",
+                "scopeName": "source.knut",
+                "path": "./syntaxes/knut.tmLanguage.json"
+            }
+        ]
+    }
+}
