@@ -1,0 +1,58 @@
+# a line comment
+// another line comment
+* a heading, which the outline view picks up
+** a nested heading
+
+include "prices/2025.knut"
+
+2025-01-01 open Assets:Bank:Checking
+2025-01-01 open Income:Salary
+2025-12-31 close Expenses:Food:Restaurants
+
+2025-01-25 "Salary January"
+Income:Salary                Assets:Bank:Checking            6500.00 CHF
+
+2025-01-31 "Rent and groceries"
+Assets:Bank:Checking         Expenses:Housing:Rent           1800.00 CHF
+Assets:Bank:Checking         Expenses:Food:Groceries          420.50 CHF
+
+2025-02-28 "Grocery refund"
+Expenses:Food:Groceries      Assets:Bank:Checking             -30.00 CHF
+
+2025-01-06 price AAPL 74.33 USD
+2025-01-07 price USD 0.88 CHF
+
+2025-01-31 balance Assets:Bank:Checking 11800 CHF
+
+2025-01-31 balance
+Assets:Bank:Checking 11800 CHF
+Assets:Portfolio 12 AAPL
+
+@performance(VT,USD)
+2026-06-24
+  Buy 11 VT @ 154.45 USD
+  over two description lines
+Assets:Investments:IBKR
+-> Expenses:Investments:Trading    1698.95 USD
+-> Expenses:Investments:Fees          1.00 USD
+
+@performance()
+2024-03-31 "Custody fee"
+Assets:Portfolio             Expenses:Fees                     12.50 CHF
+
+@accrue quarterly 2020-01-01 2020-12-31 Assets:Prepaid
+2020-03-24 "Insurance 2020"
+Assets:Checking              Expenses:Insurance                 1200 CHF
+
+2025-03-01
+  Interest, both directions
+Assets:Bank
+-> Expenses:Fees                      1.00 CHF
+<- Income:Interest                    4.20 CHF
+
+virtual Assets:Liquid
+Assets:Checking
+Assets:Savings
+Liabilities:CreditCard
+
+2025-04-01 open Assets:Bank:Konto2

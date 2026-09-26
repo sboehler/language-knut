@@ -1,67 +1,224 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "knut",
+	"scopeName": "source.knut",
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#dates"
-		},
-		{
-			"include": "#accounts"
-		},
-		{
-			"include": "#headings"
-		}
+		{ "include": "#comments" },
+		{ "include": "#annotations" },
+		{ "include": "#include" },
+		{ "include": "#virtual" },
+		{ "include": "#price" },
+		{ "include": "#dated-directive" },
+		{ "include": "#quoted-transaction" },
+		{ "include": "#grouped-transaction" },
+		{ "include": "#arrow-line" },
+		{ "include": "#booking-line" }
 	],
 	"repository": {
-		"keywords": {
+		"comments": {
 			"patterns": [
 				{
-					"name": "keyword.control.knut",
-					"match": "\\b(balance|price|open|close|include|value)\\b"
+					"name": "comment.line.number-sign.knut",
+					"match": "^(#).*$",
+					"captures": {
+						"1": { "name": "punctuation.definition.comment.knut" }
+					}
+				},
+				{
+					"name": "comment.line.double-slash.knut",
+					"match": "^(//).*$",
+					"captures": {
+						"1": { "name": "punctuation.definition.comment.knut" }
+					}
+				},
+				{
+					"name": "comment.line.asterisk.knut",
+					"match": "^(\\*+)(.*)$",
+					"captures": {
+						"1": { "name": "punctuation.definition.comment.knut" },
+						"2": { "name": "markup.heading.knut" }
+					}
 				}
 			]
 		},
-		"strings": {
+		"annotations": {
+			"patterns": [
+				{
+					"name": "meta.annotation.performance.knut",
+					"begin": "^(@)(performance)[ \\t]*(\\()",
+					"beginCaptures": {
+						"1": { "name": "punctuation.definition.annotation.knut" },
+						"2": { "name": "entity.name.function.decorator.knut" },
+						"3": { "name": "punctuation.section.parens.begin.knut" }
+					},
+					"end": "(\\))|$",
+					"endCaptures": {
+						"1": { "name": "punctuation.section.parens.end.knut" }
+					},
+					"patterns": [
+						{ "include": "#commodity" },
+						{
+							"name": "punctuation.separator.comma.knut",
+							"match": ","
+						}
+					]
+				},
+				{
+					"name": "meta.annotation.accrual.knut",
+					"begin": "^(@)(accrue)\\b",
+					"beginCaptures": {
+						"1": { "name": "punctuation.definition.annotation.knut" },
+						"2": { "name": "entity.name.function.decorator.knut" }
+					},
+					"end": "$",
+					"patterns": [
+						{
+							"name": "constant.language.interval.knut",
+							"match": "\\b(once|daily|weekly|monthly|quarterly|yearly)\\b"
+						},
+						{ "include": "#date" },
+						{ "include": "#account" }
+					]
+				}
+			]
+		},
+		"include": {
+			"name": "meta.directive.include.knut",
+			"begin": "^(include)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.control.directive.knut" }
+			},
+			"end": "$",
+			"patterns": [
+				{ "include": "#string" }
+			]
+		},
+		"virtual": {
+			"name": "meta.directive.virtual.knut",
+			"begin": "^(virtual)[ \\t]+((Assets|Liabilities|Equity|Income|Expenses)(?::[\\p{L}\\p{N}]+)*)",
+			"beginCaptures": {
+				"1": { "name": "keyword.control.directive.knut" },
+				"2": { "name": "entity.name.type.account.knut" },
+				"3": { "name": "support.class.account-type.knut" }
+			},
+			"end": "^(?![\\p{L}\\p{N}])",
+			"patterns": [
+				{
+					"name": "string.regexp.knut",
+					"match": "^\\S+"
+				}
+			]
+		},
+		"price": {
+			"name": "meta.directive.price.knut",
+			"match": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]+(price)[ \\t]+([\\p{L}\\p{N}]+)[ \\t]+(-?\\d+(?:\\.\\d+)?)[ \\t]+([\\p{L}\\p{N}]+)",
+			"captures": {
+				"1": { "name": "constant.numeric.date.knut" },
+				"2": { "name": "keyword.control.directive.knut" },
+				"3": { "name": "support.type.commodity.knut" },
+				"4": { "name": "constant.numeric.knut" },
+				"5": { "name": "support.type.commodity.knut" }
+			}
+		},
+		"dated-directive": {
+			"name": "meta.directive.knut",
+			"begin": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]+(open|close|balance)\\b",
+			"beginCaptures": {
+				"1": { "name": "constant.numeric.date.knut" },
+				"2": { "name": "keyword.control.directive.knut" }
+			},
+			"end": "$",
+			"patterns": [
+				{ "include": "#account" },
+				{ "include": "#amount" }
+			]
+		},
+		"quoted-transaction": {
+			"name": "meta.transaction.knut",
+			"begin": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]+(?=\")",
+			"beginCaptures": {
+				"1": { "name": "constant.numeric.date.knut" }
+			},
+			"end": "$",
+			"patterns": [
+				{ "include": "#string" }
+			]
+		},
+		"grouped-transaction": {
+			"name": "meta.transaction.description.knut",
+			"begin": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]*$",
+			"beginCaptures": {
+				"1": { "name": "constant.numeric.date.knut" }
+			},
+			"end": "^(?=[^ \\t])",
+			"patterns": [
+				{
+					"name": "string.unquoted.description.knut",
+					"match": "^[ \\t]+\\S.*$"
+				}
+			]
+		},
+		"arrow-line": {
+			"name": "meta.booking.knut",
+			"begin": "^(->|<-)",
+			"beginCaptures": {
+				"1": { "name": "keyword.operator.arrow.knut" }
+			},
+			"end": "$",
+			"patterns": [
+				{ "include": "#account" },
+				{ "include": "#amount" }
+			]
+		},
+		"booking-line": {
+			"name": "meta.booking.knut",
+			"begin": "^(?=(Assets|Liabilities|Equity|Income|Expenses)\\b)",
+			"end": "$",
+			"patterns": [
+				{ "include": "#account" },
+				{ "include": "#amount" }
+			]
+		},
+		"account": {
+			"name": "entity.name.type.account.knut",
+			"match": "\\b(Assets|Liabilities|Equity|Income|Expenses)((?::[\\p{L}\\p{N}]+)*)",
+			"captures": {
+				"1": { "name": "support.class.account-type.knut" },
+				"2": {
+					"patterns": [
+						{
+							"name": "punctuation.separator.account.knut",
+							"match": ":"
+						}
+					]
+				}
+			}
+		},
+		"amount": {
+			"match": "(-?\\d+(?:\\.\\d+)?)[ \\t]+([\\p{L}\\p{N}]+)",
+			"captures": {
+				"1": { "name": "constant.numeric.knut" },
+				"2": { "name": "support.type.commodity.knut" }
+			}
+		},
+		"commodity": {
+			"name": "support.type.commodity.knut",
+			"match": "[\\p{L}\\p{N}]+"
+		},
+		"date": {
+			"name": "constant.numeric.date.knut",
+			"match": "\\d{4}-\\d{2}-\\d{2}"
+		},
+		"string": {
 			"name": "string.quoted.double.knut",
 			"begin": "\"",
+			"beginCaptures": {
+				"0": { "name": "punctuation.definition.string.begin.knut" }
+			},
 			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.knut",
-					"match": "\\\\."
-				}
-			]
-		},
-		"dates": {
-			"patterns": [
-				{
-					"name": "variable.other.date",
-					"match": "^(\\d{4}-\\d{2}-\\d{2})\\b"
-				}
-			]
-		},
-		"accounts": {
-			"patterns": [
-				{
-					"name": "variable.other.account",
-					"match": "\\b(Assets|Liabilities|Equity|Income|Expenses)(:\\p{Alnum}+)*\\b"
-				}
-			]
-		},
-		"headings": {
-			"patterns": [
-				{
-					"name": "markup.headings",
-					"match": "^(\\*)+.*$"
-				}
-			]
+			"endCaptures": {
+				"0": { "name": "punctuation.definition.string.end.knut" }
+			}
 		}
-	},
-	"scopeName": "source.knut"
+	}
 }

@@ -13,5 +13,6 @@ flake.lock
 .gitattributes
 .gitignore
 vsc-extension-quickstart.md
+syntaxes/tests/**
 **/*.ts
 **/*.map
