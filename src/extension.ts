@@ -1,16 +1,51 @@
 import * as vscode from 'vscode';
 
-export function activate(context: vscode.ExtensionContext) {
+import { Diagnostics } from './diagnostics';
+import { Formatter } from './formatter';
+import { IncludeLinks } from './links';
 
-    const disp = vscode.languages.registerDocumentSymbolProvider("knut", new KnutOutlineProvider());
-    context.subscriptions.push(disp);
+const LANGUAGE = "fin";
+
+export function activate(context: vscode.ExtensionContext) {
+    const log = vscode.window.createOutputChannel("fin");
+    context.subscriptions.push(log);
+
+    context.subscriptions.push(
+        vscode.languages.registerDocumentSymbolProvider(LANGUAGE, new FinOutlineProvider()));
+
+    context.subscriptions.push(
+        vscode.languages.registerDocumentFormattingEditProvider(LANGUAGE, new Formatter(log)));
+
+    context.subscriptions.push(
+        vscode.languages.registerDocumentLinkProvider(LANGUAGE, new IncludeLinks()));
+
+    const diagnostics = new Diagnostics(log);
+    context.subscriptions.push(diagnostics);
+
+    const check = (document: vscode.TextDocument) => {
+        if (document.languageId === LANGUAGE) {
+            diagnostics.check(document);
+        }
+    };
+    context.subscriptions.push(
+        vscode.workspace.onDidOpenTextDocument(check),
+        vscode.workspace.onDidSaveTextDocument(check),
+        // The journal to check and whether to check at all are both settings.
+        vscode.workspace.onDidChangeConfiguration(event => {
+            if (!event.affectsConfiguration("fin")) {
+                return;
+            }
+            diagnostics.reset();
+            vscode.workspace.textDocuments.forEach(check);
+        }));
+    vscode.workspace.textDocuments.forEach(check);
 }
 
 // this method is called when your extension is deactivated
 export function deactivate() { }
 
 
-class KnutOutlineProvider implements vscode.DocumentSymbolProvider {
+class FinOutlineProvider implements vscode.DocumentSymbolProvider {
 
     provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken): vscode.ProviderResult<vscode.SymbolInformation[] | vscode.DocumentSymbol[]> {
         const result: vscode.DocumentSymbol[] = [];

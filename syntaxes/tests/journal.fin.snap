@@ -1,0 +1,344 @@
+># a line comment
+#^ source.fin comment.line.number-sign.fin punctuation.definition.comment.fin
+# ^^^^^^^^^^^^^^^ source.fin comment.line.number-sign.fin
+>// another line comment
+#^^ source.fin comment.line.double-slash.fin punctuation.definition.comment.fin
+#  ^^^^^^^^^^^^^^^^^^^^^ source.fin comment.line.double-slash.fin
+>* a heading, which the outline view picks up
+#^ source.fin comment.line.asterisk.fin punctuation.definition.comment.fin
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.fin comment.line.asterisk.fin markup.heading.fin
+>** a nested heading
+#^^ source.fin comment.line.asterisk.fin punctuation.definition.comment.fin
+#  ^^^^^^^^^^^^^^^^^ source.fin comment.line.asterisk.fin markup.heading.fin
+>
+>include "prices/2025.fin"
+#^^^^^^^ source.fin meta.directive.include.fin keyword.control.directive.fin
+#       ^ source.fin meta.directive.include.fin
+#        ^ source.fin meta.directive.include.fin string.quoted.double.fin punctuation.definition.string.begin.fin
+#         ^^^^^^^^^^^^^^^ source.fin meta.directive.include.fin string.quoted.double.fin
+#                        ^ source.fin meta.directive.include.fin string.quoted.double.fin punctuation.definition.string.end.fin
+>
+>2025-01-01 open Assets:Bank:Checking
+#^^^^^^^^^^ source.fin meta.directive.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.fin
+#           ^^^^ source.fin meta.directive.fin keyword.control.directive.fin
+#               ^ source.fin meta.directive.fin
+#                ^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin support.class.account-type.fin
+#                      ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                       ^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+#                           ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                            ^^^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+>2025-01-01 open Income:Salary
+#^^^^^^^^^^ source.fin meta.directive.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.fin
+#           ^^^^ source.fin meta.directive.fin keyword.control.directive.fin
+#               ^ source.fin meta.directive.fin
+#                ^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin support.class.account-type.fin
+#                      ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                       ^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+>2025-12-31 close Expenses:Food:Restaurants
+#^^^^^^^^^^ source.fin meta.directive.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.fin
+#           ^^^^^ source.fin meta.directive.fin keyword.control.directive.fin
+#                ^ source.fin meta.directive.fin
+#                 ^^^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin support.class.account-type.fin
+#                         ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                          ^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+#                              ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                               ^^^^^^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+>
+>2025-01-25 "Salary January"
+#^^^^^^^^^^ source.fin meta.transaction.fin constant.numeric.date.fin
+#          ^ source.fin meta.transaction.fin
+#           ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.begin.fin
+#            ^^^^^^^^^^^^^^ source.fin meta.transaction.fin string.quoted.double.fin
+#                          ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.end.fin
+>Income:Salary                Assets:Bank:Checking            6500.00 CHF
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#             ^^^^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                             ^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#                                   ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                    ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                        ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                         ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                                 ^^^^^^^^^^^^ source.fin meta.booking.fin
+#                                                             ^^^^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                                                    ^ source.fin meta.booking.fin
+#                                                                     ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>2025-01-31 "Rent and groceries"
+#^^^^^^^^^^ source.fin meta.transaction.fin constant.numeric.date.fin
+#          ^ source.fin meta.transaction.fin
+#           ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.begin.fin
+#            ^^^^^^^^^^^^^^^^^^ source.fin meta.transaction.fin string.quoted.double.fin
+#                              ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.end.fin
+>Assets:Bank:Checking         Expenses:Housing:Rent           1800.00 CHF
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#           ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#            ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                    ^^^^^^^^^ source.fin meta.booking.fin
+#                             ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#                                     ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                      ^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                             ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                              ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                                  ^^^^^^^^^^^ source.fin meta.booking.fin
+#                                                             ^^^^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                                                    ^ source.fin meta.booking.fin
+#                                                                     ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>Assets:Bank:Checking         Expenses:Food:Groceries          420.50 CHF
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#           ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#            ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                    ^^^^^^^^^ source.fin meta.booking.fin
+#                             ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#                                     ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                      ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                          ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                           ^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                                    ^^^^^^^^^^ source.fin meta.booking.fin
+#                                                              ^^^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                                                    ^ source.fin meta.booking.fin
+#                                                                     ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>2025-02-28 "Grocery refund"
+#^^^^^^^^^^ source.fin meta.transaction.fin constant.numeric.date.fin
+#          ^ source.fin meta.transaction.fin
+#           ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.begin.fin
+#            ^^^^^^^^^^^^^^ source.fin meta.transaction.fin string.quoted.double.fin
+#                          ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.end.fin
+>Expenses:Food:Groceries      Assets:Bank:Checking             -30.00 CHF
+#^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#        ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#         ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#             ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#              ^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                       ^^^^^^ source.fin meta.booking.fin
+#                             ^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#                                   ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                    ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                        ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                         ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                                 ^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                                                              ^^^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                                                    ^ source.fin meta.booking.fin
+#                                                                     ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>2025-01-06 price AAPL 74.33 USD
+#^^^^^^^^^^ source.fin meta.directive.price.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.price.fin
+#           ^^^^^ source.fin meta.directive.price.fin keyword.control.directive.fin
+#                ^ source.fin meta.directive.price.fin
+#                 ^^^^ source.fin meta.directive.price.fin support.type.commodity.fin
+#                     ^ source.fin meta.directive.price.fin
+#                      ^^^^^ source.fin meta.directive.price.fin constant.numeric.fin
+#                           ^ source.fin meta.directive.price.fin
+#                            ^^^ source.fin meta.directive.price.fin support.type.commodity.fin
+>2025-01-07 price USD 0.88 CHF
+#^^^^^^^^^^ source.fin meta.directive.price.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.price.fin
+#           ^^^^^ source.fin meta.directive.price.fin keyword.control.directive.fin
+#                ^ source.fin meta.directive.price.fin
+#                 ^^^ source.fin meta.directive.price.fin support.type.commodity.fin
+#                    ^ source.fin meta.directive.price.fin
+#                     ^^^^ source.fin meta.directive.price.fin constant.numeric.fin
+#                         ^ source.fin meta.directive.price.fin
+#                          ^^^ source.fin meta.directive.price.fin support.type.commodity.fin
+>
+>2025-01-31 balance Assets:Bank:Checking 11800 CHF
+#^^^^^^^^^^ source.fin meta.directive.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.fin
+#           ^^^^^^^ source.fin meta.directive.fin keyword.control.directive.fin
+#                  ^ source.fin meta.directive.fin
+#                   ^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin support.class.account-type.fin
+#                         ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                          ^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+#                              ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                               ^^^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+#                                       ^ source.fin meta.directive.fin
+#                                        ^^^^^ source.fin meta.directive.fin constant.numeric.fin
+#                                             ^ source.fin meta.directive.fin
+#                                              ^^^ source.fin meta.directive.fin support.type.commodity.fin
+>
+>2025-01-31 balance
+#^^^^^^^^^^ source.fin meta.directive.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.fin
+#           ^^^^^^^ source.fin meta.directive.fin keyword.control.directive.fin
+>Assets:Bank:Checking 11800 CHF
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#           ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#            ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                    ^ source.fin meta.booking.fin
+#                     ^^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                          ^ source.fin meta.booking.fin
+#                           ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>Assets:Portfolio 12 AAPL
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                ^ source.fin meta.booking.fin
+#                 ^^ source.fin meta.booking.fin constant.numeric.fin
+#                   ^ source.fin meta.booking.fin
+#                    ^^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>@performance(VT,USD)
+#^ source.fin meta.annotation.performance.fin punctuation.definition.annotation.fin
+# ^^^^^^^^^^^ source.fin meta.annotation.performance.fin entity.name.function.decorator.fin
+#            ^ source.fin meta.annotation.performance.fin punctuation.section.parens.begin.fin
+#             ^^ source.fin meta.annotation.performance.fin support.type.commodity.fin
+#               ^ source.fin meta.annotation.performance.fin punctuation.separator.comma.fin
+#                ^^^ source.fin meta.annotation.performance.fin support.type.commodity.fin
+#                   ^ source.fin meta.annotation.performance.fin punctuation.section.parens.end.fin
+>2026-06-24
+#^^^^^^^^^^ source.fin meta.transaction.description.fin constant.numeric.date.fin
+>  Buy 11 VT @ 154.45 USD
+#^^^^^^^^^^^^^^^^^^^^^^^^ source.fin meta.transaction.description.fin string.unquoted.description.fin
+>  over two description lines
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.fin meta.transaction.description.fin string.unquoted.description.fin
+>Assets:Investments:IBKR
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                  ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                   ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+>-> Expenses:Investments:Trading    1698.95 USD
+#^^ source.fin meta.booking.fin keyword.operator.arrow.fin
+#  ^ source.fin meta.booking.fin
+#   ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#           ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#            ^^^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                       ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                        ^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                               ^^^^ source.fin meta.booking.fin
+#                                   ^^^^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                          ^ source.fin meta.booking.fin
+#                                           ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>-> Expenses:Investments:Fees          1.00 USD
+#^^ source.fin meta.booking.fin keyword.operator.arrow.fin
+#  ^ source.fin meta.booking.fin
+#   ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#           ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#            ^^^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                       ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                        ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                            ^^^^^^^^^^ source.fin meta.booking.fin
+#                                      ^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                          ^ source.fin meta.booking.fin
+#                                           ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>@performance()
+#^ source.fin meta.annotation.performance.fin punctuation.definition.annotation.fin
+# ^^^^^^^^^^^ source.fin meta.annotation.performance.fin entity.name.function.decorator.fin
+#            ^ source.fin meta.annotation.performance.fin punctuation.section.parens.begin.fin
+#             ^ source.fin meta.annotation.performance.fin punctuation.section.parens.end.fin
+>2024-03-31 "Custody fee"
+#^^^^^^^^^^ source.fin meta.transaction.fin constant.numeric.date.fin
+#          ^ source.fin meta.transaction.fin
+#           ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.begin.fin
+#            ^^^^^^^^^^^ source.fin meta.transaction.fin string.quoted.double.fin
+#                       ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.end.fin
+>Assets:Portfolio             Expenses:Fees                     12.50 CHF
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                ^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                             ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#                                     ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                      ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                          ^^^^^^^^^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                                                               ^^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                                                    ^ source.fin meta.booking.fin
+#                                                                     ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>@accrue quarterly 2020-01-01 2020-12-31 Assets:Prepaid
+#^ source.fin meta.annotation.accrual.fin punctuation.definition.annotation.fin
+# ^^^^^^ source.fin meta.annotation.accrual.fin entity.name.function.decorator.fin
+#       ^ source.fin meta.annotation.accrual.fin
+#        ^^^^^^^^^ source.fin meta.annotation.accrual.fin constant.language.interval.fin
+#                 ^ source.fin meta.annotation.accrual.fin
+#                  ^^^^^^^^^^ source.fin meta.annotation.accrual.fin constant.numeric.date.fin
+#                            ^ source.fin meta.annotation.accrual.fin
+#                             ^^^^^^^^^^ source.fin meta.annotation.accrual.fin constant.numeric.date.fin
+#                                       ^ source.fin meta.annotation.accrual.fin
+#                                        ^^^^^^ source.fin meta.annotation.accrual.fin entity.name.type.account.fin support.class.account-type.fin
+#                                              ^ source.fin meta.annotation.accrual.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                               ^^^^^^^ source.fin meta.annotation.accrual.fin entity.name.type.account.fin
+>2020-03-24 "Insurance 2020"
+#^^^^^^^^^^ source.fin meta.transaction.fin constant.numeric.date.fin
+#          ^ source.fin meta.transaction.fin
+#           ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.begin.fin
+#            ^^^^^^^^^^^^^^ source.fin meta.transaction.fin string.quoted.double.fin
+#                          ^ source.fin meta.transaction.fin string.quoted.double.fin punctuation.definition.string.end.fin
+>Assets:Checking              Expenses:Insurance                 1200 CHF
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#               ^^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                             ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#                                     ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                                      ^^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                                               ^^^^^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                                                                ^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                                                    ^ source.fin meta.booking.fin
+#                                                                     ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>2025-03-01
+#^^^^^^^^^^ source.fin meta.transaction.description.fin constant.numeric.date.fin
+>  Interest, both directions
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^ source.fin meta.transaction.description.fin string.unquoted.description.fin
+>Assets:Bank
+#^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#      ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#       ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+>-> Expenses:Fees                      1.00 CHF
+#^^ source.fin meta.booking.fin keyword.operator.arrow.fin
+#  ^ source.fin meta.booking.fin
+#   ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#           ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#            ^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                ^^^^^^^^^^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                                      ^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                          ^ source.fin meta.booking.fin
+#                                           ^^^ source.fin meta.booking.fin support.type.commodity.fin
+><- Income:Interest                    4.20 CHF
+#^^ source.fin meta.booking.fin keyword.operator.arrow.fin
+#  ^ source.fin meta.booking.fin
+#   ^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin support.class.account-type.fin
+#         ^ source.fin meta.booking.fin entity.name.type.account.fin punctuation.separator.account.fin
+#          ^^^^^^^^ source.fin meta.booking.fin entity.name.type.account.fin
+#                  ^^^^^^^^^^^^^^^^^^^^ source.fin meta.booking.fin
+#                                      ^^^^ source.fin meta.booking.fin constant.numeric.fin
+#                                          ^ source.fin meta.booking.fin
+#                                           ^^^ source.fin meta.booking.fin support.type.commodity.fin
+>
+>virtual Assets:Liquid
+#^^^^^^^ source.fin meta.directive.virtual.fin keyword.control.directive.fin
+#       ^ source.fin meta.directive.virtual.fin
+#        ^^^^^^ source.fin meta.directive.virtual.fin entity.name.type.account.fin support.class.account-type.fin
+#              ^^^^^^^ source.fin meta.directive.virtual.fin entity.name.type.account.fin
+>Assets:Checking
+#^^^^^^^^^^^^^^^ source.fin meta.directive.virtual.fin string.regexp.fin
+>Assets:Savings
+#^^^^^^^^^^^^^^ source.fin meta.directive.virtual.fin string.regexp.fin
+>Liabilities:CreditCard
+#^^^^^^^^^^^^^^^^^^^^^^ source.fin meta.directive.virtual.fin string.regexp.fin
+>
+>2025-04-01 open Assets:Bank:Konto2
+#^^^^^^^^^^ source.fin meta.directive.fin constant.numeric.date.fin
+#          ^ source.fin meta.directive.fin
+#           ^^^^ source.fin meta.directive.fin keyword.control.directive.fin
+#               ^ source.fin meta.directive.fin
+#                ^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin support.class.account-type.fin
+#                      ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                       ^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+#                           ^ source.fin meta.directive.fin entity.name.type.account.fin punctuation.separator.account.fin
+#                            ^^^^^^ source.fin meta.directive.fin entity.name.type.account.fin
+>

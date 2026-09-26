@@ -1,3 +1,5 @@
+.direnv/**
+.envrc
 .github/**
 .vscode/**
 .vscode-test/**

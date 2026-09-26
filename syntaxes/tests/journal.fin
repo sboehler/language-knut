@@ -3,7 +3,7 @@
 * a heading, which the outline view picks up
 ** a nested heading
 
-include "prices/2025.knut"
+include "prices/2025.fin"
 
 2025-01-01 open Assets:Bank:Checking
 2025-01-01 open Income:Salary

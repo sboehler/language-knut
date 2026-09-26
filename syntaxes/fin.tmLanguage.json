@@ -1,7 +1,7 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "knut",
-	"scopeName": "source.knut",
+	"name": "fin",
+	"scopeName": "source.fin",
 	"patterns": [
 		{ "include": "#comments" },
 		{ "include": "#annotations" },
@@ -18,25 +18,25 @@
 		"comments": {
 			"patterns": [
 				{
-					"name": "comment.line.number-sign.knut",
+					"name": "comment.line.number-sign.fin",
 					"match": "^(#).*$",
 					"captures": {
-						"1": { "name": "punctuation.definition.comment.knut" }
+						"1": { "name": "punctuation.definition.comment.fin" }
 					}
 				},
 				{
-					"name": "comment.line.double-slash.knut",
+					"name": "comment.line.double-slash.fin",
 					"match": "^(//).*$",
 					"captures": {
-						"1": { "name": "punctuation.definition.comment.knut" }
+						"1": { "name": "punctuation.definition.comment.fin" }
 					}
 				},
 				{
-					"name": "comment.line.asterisk.knut",
+					"name": "comment.line.asterisk.fin",
 					"match": "^(\\*+)(.*)$",
 					"captures": {
-						"1": { "name": "punctuation.definition.comment.knut" },
-						"2": { "name": "markup.heading.knut" }
+						"1": { "name": "punctuation.definition.comment.fin" },
+						"2": { "name": "markup.heading.fin" }
 					}
 				}
 			]
@@ -44,36 +44,36 @@
 		"annotations": {
 			"patterns": [
 				{
-					"name": "meta.annotation.performance.knut",
+					"name": "meta.annotation.performance.fin",
 					"begin": "^(@)(performance)[ \\t]*(\\()",
 					"beginCaptures": {
-						"1": { "name": "punctuation.definition.annotation.knut" },
-						"2": { "name": "entity.name.function.decorator.knut" },
-						"3": { "name": "punctuation.section.parens.begin.knut" }
+						"1": { "name": "punctuation.definition.annotation.fin" },
+						"2": { "name": "entity.name.function.decorator.fin" },
+						"3": { "name": "punctuation.section.parens.begin.fin" }
 					},
 					"end": "(\\))|$",
 					"endCaptures": {
-						"1": { "name": "punctuation.section.parens.end.knut" }
+						"1": { "name": "punctuation.section.parens.end.fin" }
 					},
 					"patterns": [
 						{ "include": "#commodity" },
 						{
-							"name": "punctuation.separator.comma.knut",
+							"name": "punctuation.separator.comma.fin",
 							"match": ","
 						}
 					]
 				},
 				{
-					"name": "meta.annotation.accrual.knut",
+					"name": "meta.annotation.accrual.fin",
 					"begin": "^(@)(accrue)\\b",
 					"beginCaptures": {
-						"1": { "name": "punctuation.definition.annotation.knut" },
-						"2": { "name": "entity.name.function.decorator.knut" }
+						"1": { "name": "punctuation.definition.annotation.fin" },
+						"2": { "name": "entity.name.function.decorator.fin" }
 					},
 					"end": "$",
 					"patterns": [
 						{
-							"name": "constant.language.interval.knut",
+							"name": "constant.language.interval.fin",
 							"match": "\\b(once|daily|weekly|monthly|quarterly|yearly)\\b"
 						},
 						{ "include": "#date" },
@@ -83,10 +83,10 @@
 			]
 		},
 		"include": {
-			"name": "meta.directive.include.knut",
+			"name": "meta.directive.include.fin",
 			"begin": "^(include)\\b",
 			"beginCaptures": {
-				"1": { "name": "keyword.control.directive.knut" }
+				"1": { "name": "keyword.control.directive.fin" }
 			},
 			"end": "$",
 			"patterns": [
@@ -94,38 +94,38 @@
 			]
 		},
 		"virtual": {
-			"name": "meta.directive.virtual.knut",
+			"name": "meta.directive.virtual.fin",
 			"begin": "^(virtual)[ \\t]+((Assets|Liabilities|Equity|Income|Expenses)(?::[\\p{L}\\p{N}]+)*)",
 			"beginCaptures": {
-				"1": { "name": "keyword.control.directive.knut" },
-				"2": { "name": "entity.name.type.account.knut" },
-				"3": { "name": "support.class.account-type.knut" }
+				"1": { "name": "keyword.control.directive.fin" },
+				"2": { "name": "entity.name.type.account.fin" },
+				"3": { "name": "support.class.account-type.fin" }
 			},
 			"end": "^(?![\\p{L}\\p{N}])",
 			"patterns": [
 				{
-					"name": "string.regexp.knut",
+					"name": "string.regexp.fin",
 					"match": "^\\S+"
 				}
 			]
 		},
 		"price": {
-			"name": "meta.directive.price.knut",
+			"name": "meta.directive.price.fin",
 			"match": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]+(price)[ \\t]+([\\p{L}\\p{N}]+)[ \\t]+(-?\\d+(?:\\.\\d+)?)[ \\t]+([\\p{L}\\p{N}]+)",
 			"captures": {
-				"1": { "name": "constant.numeric.date.knut" },
-				"2": { "name": "keyword.control.directive.knut" },
-				"3": { "name": "support.type.commodity.knut" },
-				"4": { "name": "constant.numeric.knut" },
-				"5": { "name": "support.type.commodity.knut" }
+				"1": { "name": "constant.numeric.date.fin" },
+				"2": { "name": "keyword.control.directive.fin" },
+				"3": { "name": "support.type.commodity.fin" },
+				"4": { "name": "constant.numeric.fin" },
+				"5": { "name": "support.type.commodity.fin" }
 			}
 		},
 		"dated-directive": {
-			"name": "meta.directive.knut",
+			"name": "meta.directive.fin",
 			"begin": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]+(open|close|balance)\\b",
 			"beginCaptures": {
-				"1": { "name": "constant.numeric.date.knut" },
-				"2": { "name": "keyword.control.directive.knut" }
+				"1": { "name": "constant.numeric.date.fin" },
+				"2": { "name": "keyword.control.directive.fin" }
 			},
 			"end": "$",
 			"patterns": [
@@ -134,10 +134,10 @@
 			]
 		},
 		"quoted-transaction": {
-			"name": "meta.transaction.knut",
+			"name": "meta.transaction.fin",
 			"begin": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]+(?=\")",
 			"beginCaptures": {
-				"1": { "name": "constant.numeric.date.knut" }
+				"1": { "name": "constant.numeric.date.fin" }
 			},
 			"end": "$",
 			"patterns": [
@@ -145,24 +145,24 @@
 			]
 		},
 		"grouped-transaction": {
-			"name": "meta.transaction.description.knut",
+			"name": "meta.transaction.description.fin",
 			"begin": "^(\\d{4}-\\d{2}-\\d{2})[ \\t]*$",
 			"beginCaptures": {
-				"1": { "name": "constant.numeric.date.knut" }
+				"1": { "name": "constant.numeric.date.fin" }
 			},
 			"end": "^(?=[^ \\t])",
 			"patterns": [
 				{
-					"name": "string.unquoted.description.knut",
+					"name": "string.unquoted.description.fin",
 					"match": "^[ \\t]+\\S.*$"
 				}
 			]
 		},
 		"arrow-line": {
-			"name": "meta.booking.knut",
+			"name": "meta.booking.fin",
 			"begin": "^(->|<-)",
 			"beginCaptures": {
-				"1": { "name": "keyword.operator.arrow.knut" }
+				"1": { "name": "keyword.operator.arrow.fin" }
 			},
 			"end": "$",
 			"patterns": [
@@ -171,7 +171,7 @@
 			]
 		},
 		"booking-line": {
-			"name": "meta.booking.knut",
+			"name": "meta.booking.fin",
 			"begin": "^(?=(Assets|Liabilities|Equity|Income|Expenses)\\b)",
 			"end": "$",
 			"patterns": [
@@ -180,14 +180,14 @@
 			]
 		},
 		"account": {
-			"name": "entity.name.type.account.knut",
+			"name": "entity.name.type.account.fin",
 			"match": "\\b(Assets|Liabilities|Equity|Income|Expenses)((?::[\\p{L}\\p{N}]+)*)",
 			"captures": {
-				"1": { "name": "support.class.account-type.knut" },
+				"1": { "name": "support.class.account-type.fin" },
 				"2": {
 					"patterns": [
 						{
-							"name": "punctuation.separator.account.knut",
+							"name": "punctuation.separator.account.fin",
 							"match": ":"
 						}
 					]
@@ -197,27 +197,27 @@
 		"amount": {
 			"match": "(-?\\d+(?:\\.\\d+)?)[ \\t]+([\\p{L}\\p{N}]+)",
 			"captures": {
-				"1": { "name": "constant.numeric.knut" },
-				"2": { "name": "support.type.commodity.knut" }
+				"1": { "name": "constant.numeric.fin" },
+				"2": { "name": "support.type.commodity.fin" }
 			}
 		},
 		"commodity": {
-			"name": "support.type.commodity.knut",
+			"name": "support.type.commodity.fin",
 			"match": "[\\p{L}\\p{N}]+"
 		},
 		"date": {
-			"name": "constant.numeric.date.knut",
+			"name": "constant.numeric.date.fin",
 			"match": "\\d{4}-\\d{2}-\\d{2}"
 		},
 		"string": {
-			"name": "string.quoted.double.knut",
+			"name": "string.quoted.double.fin",
 			"begin": "\"",
 			"beginCaptures": {
-				"0": { "name": "punctuation.definition.string.begin.knut" }
+				"0": { "name": "punctuation.definition.string.begin.fin" }
 			},
 			"end": "\"",
 			"endCaptures": {
-				"0": { "name": "punctuation.definition.string.end.knut" }
+				"0": { "name": "punctuation.definition.string.end.fin" }
 			}
 		}
 	}

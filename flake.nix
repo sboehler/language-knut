@@ -1,5 +1,5 @@
 {
-  description = "knut";
+  description = "fin";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -22,7 +22,7 @@
       pkgs = nixpkgsFor.${system};
     in {
       default = pkgs.mkShell {
-        name = "knut";
+        name = "fin";
         buildInputs = with pkgs; [
           nodejs_24
         ];

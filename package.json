@@ -1,12 +1,12 @@
 {
-    "name": "language-knut",
-    "displayName": "knut syntax support",
-    "description": "Syntax support for the knut plain-text accounting system",
+    "name": "language-fin",
+    "displayName": "fin syntax support",
+    "description": "Syntax support for the fin plain-text accounting system",
     "publisher": "sboehler",
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/sboehler/language-knut"
+        "url": "https://github.com/sboehler/language-fin"
     },
     "version": "0.0.1",
     "engines": {
@@ -18,27 +18,46 @@
     "contributes": {
         "languages": [
             {
-                "id": "knut",
+                "id": "fin",
                 "aliases": [
-                    "knut"
+                    "fin"
                 ],
                 "extensions": [
-                    ".knut",
                     ".fin"
                 ],
                 "configuration": "./language-configuration.json"
             }
         ],
+        "configuration": {
+            "title": "fin",
+            "properties": {
+                "fin.executable": {
+                    "type": "string",
+                    "default": "fin",
+                    "markdownDescription": "The `fin` executable, used to check and format journals. A bare name is looked up on `PATH`."
+                },
+                "fin.journal": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "The root journal, as a path relative to the workspace folder. When set, journals are checked with `fin balance` over it, which also reports accounts booked to before they are opened and balance assertions that do not hold. When empty, only the edited file is checked, for syntax errors alone."
+                },
+                "fin.diagnostics.enable": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Report what `fin` finds in the journal, when a file is opened or saved."
+                }
+            }
+        },
         "grammars": [
             {
-                "language": "knut",
-                "scopeName": "source.knut",
-                "path": "./syntaxes/knut.tmLanguage.json"
+                "language": "fin",
+                "scopeName": "source.fin",
+                "path": "./syntaxes/fin.tmLanguage.json"
             }
         ]
     },
     "activationEvents": [
-        "onLanguage:knut"
+        "onLanguage:fin"
     ],
     "main": "./dist/extension.js",
     "scripts": {
@@ -46,11 +65,12 @@
         "compile": "webpack --config ./build/node-extension.webpack.config.js",
         "watch": "webpack --watch --config ./build/node-extension.webpack.config.js",
         "package": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js",
-        "compile-tests": "tsc -p ./",
+        "clean": "node -e \"require('fs').rmSync('out',{recursive:true,force:true})\"",
+        "compile-tests": "npm run clean && tsc -p ./",
         "watch-tests": "tsc -watch -p ./",
-        "pretest": "npm run compile-tests && npm run lint",
+        "pretest": "npm run compile-tests && npm run compile && npm run lint",
         "lint": "eslint src",
-        "test:grammar": "vscode-tmgrammar-snap --scope source.knut -g syntaxes/knut.tmLanguage.json \"syntaxes/tests/*.knut\"",
+        "test:grammar": "vscode-tmgrammar-snap --scope source.fin -g syntaxes/fin.tmLanguage.json \"syntaxes/tests/*.fin\"",
         "test": "npm run test:grammar && vscode-test"
     },
     "devDependencies": {
