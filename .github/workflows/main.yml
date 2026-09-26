@@ -29,3 +29,15 @@ jobs:
         if: runner.os == 'Linux'
       - run: npm test
         if: runner.os != 'Linux'
+
+  # The flake packages the extension, and a dependency bump can break that on
+  # its own: the lock file is what it reads the dependencies from.
+  nix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - run: nix flake check
+      - run: nix build

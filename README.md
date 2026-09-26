@@ -23,7 +23,19 @@ npm install
 npx vsce package
 ```
 
-Then, install the resulting VSIX file in Visual Studio Code.
+With [Nix](https://nixos.org) the same package is built without a toolchain of
+your own, and without cloning first:
+
+```shell
+nix build github:sboehler/language-fin
+```
+
+Either way, install the VSIX file that comes out — in the repository, or under
+the `result` the Nix build links to:
+
+```shell
+code --install-extension result/language-fin-0.0.1.vsix
+```
 
 ## Configuration
 
