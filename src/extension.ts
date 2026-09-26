@@ -71,7 +71,7 @@ class KnutOutlineProvider implements vscode.DocumentSymbolProvider {
                     r.range = new vscode.Range(r.range.start, document.lineAt(l - 1).range.end);
                 }
             }
-            const s = new vscode.DocumentSymbol(line.text.substr(stars).trim(), "", vscode.SymbolKind.Function, line.range, line.range);
+            const s = new vscode.DocumentSymbol(line.text.slice(stars).trim(), "", vscode.SymbolKind.Function, line.range, line.range);
             let parent;
             for (let i = stack.length - 1; i >= 0; i--) {
                 parent = stack[stack.length - 1];

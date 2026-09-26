@@ -24,7 +24,7 @@
       default = pkgs.mkShell {
         name = "knut";
         buildInputs = with pkgs; [
-          nodejs
+          nodejs_24
         ];
       };
     });

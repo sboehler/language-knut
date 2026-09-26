@@ -1,4 +1,17 @@
+.github/**
 .vscode/**
 .vscode-test/**
+.vscode-test.mjs
+build/**
+out/**
+src/**
+eslint.config.mjs
+tsconfig.json
+package-lock.json
+flake.nix
+flake.lock
+.gitattributes
 .gitignore
 vsc-extension-quickstart.md
+**/*.ts
+**/*.map
