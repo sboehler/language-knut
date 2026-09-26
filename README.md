@@ -9,9 +9,10 @@ Current features:
 - Formatting with `fin format`, so format-on-save works
 - Ctrl-click an `include` path to open the file it names
 - Outline view over org-mode style `*` headings
+- Completion of account names, from the `open` directives of the journal
 
-Everything but the highlighting and the outline needs the `fin` binary; see
-[Configuration](#configuration).
+The highlighting, the outline and the completions work on their own; everything
+else needs the `fin` binary, see [Configuration](#configuration).
 
 The extension is not published in the market place. For now, clone this repo and build it manually:
 
@@ -43,6 +44,12 @@ open the accounts it books to, so checking one on its own would invent errors.
 
 `fin` reads from disk, so journals are checked when opened and when saved, not
 while being typed into.
+
+Account names are completed from the `open` directives the journal holds, which
+the extension reads itself: with `fin.journal` set, from the root journal and
+everything it includes, and otherwise from the edited file, its includes, and
+every other `.fin` file in the workspace. An account is offered as soon as it is
+opened, before the file it is opened in has been saved.
 
 ## Development
 

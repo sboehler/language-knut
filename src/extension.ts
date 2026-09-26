@@ -1,7 +1,9 @@
 import * as vscode from 'vscode';
 
+import { AccountCompletions } from './completion';
 import { Diagnostics } from './diagnostics';
 import { Formatter } from './formatter';
+import { JournalIndex } from './journal';
 import { IncludeLinks } from './links';
 
 const LANGUAGE = "fin";
@@ -19,6 +21,13 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.languages.registerDocumentLinkProvider(LANGUAGE, new IncludeLinks()));
 
+    const index = new JournalIndex(log);
+    context.subscriptions.push(index);
+    context.subscriptions.push(
+        // A colon starts a segment, so completion is offered again after one.
+        vscode.languages.registerCompletionItemProvider(
+            LANGUAGE, new AccountCompletions(index), ':'));
+
     const diagnostics = new Diagnostics(log);
     context.subscriptions.push(diagnostics);
 
@@ -30,11 +39,13 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.workspace.onDidOpenTextDocument(check),
         vscode.workspace.onDidSaveTextDocument(check),
-        // The journal to check and whether to check at all are both settings.
+        // The journal to check and to read the accounts from, and whether
+        // to check at all, are all settings.
         vscode.workspace.onDidChangeConfiguration(event => {
             if (!event.affectsConfiguration("fin")) {
                 return;
             }
+            index.reset();
             diagnostics.reset();
             vscode.workspace.textDocuments.forEach(check);
         }));

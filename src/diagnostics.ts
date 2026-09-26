@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 
 import { FinError, parseFinErrors, run } from './fin';
+import { rootJournal } from './journal';
 
 /**
  * Publishes what fin has to say about the journal.
@@ -50,7 +51,7 @@ export class Diagnostics implements vscode.Disposable {
             return;
         }
 
-        const journal = this.rootJournal(document);
+        const journal = rootJournal(document);
         const target = journal ?? document.uri.fsPath;
         const args = journal ? ['balance', journal] : ['parse', target];
 
@@ -60,25 +61,6 @@ export class Diagnostics implements vscode.Disposable {
             this.log.appendLine(output.trim());
         }
         await this.publish(target, errors, document.uri);
-    }
-
-    /**
-     * The journal to check, from fin.journal, resolved against the workspace
-     * folder the document is in. Undefined when the setting is empty, which
-     * means the document stands in for it.
-     */
-    private rootJournal(document: vscode.TextDocument): string | undefined {
-        const configured = vscode.workspace
-            .getConfiguration('fin', document.uri)
-            .get<string>('journal')?.trim();
-        if (!configured) {
-            return undefined;
-        }
-        if (path.isAbsolute(configured)) {
-            return configured;
-        }
-        const folder = vscode.workspace.getWorkspaceFolder(document.uri);
-        return folder ? path.join(folder.uri.fsPath, configured) : undefined;
     }
 
     /**
